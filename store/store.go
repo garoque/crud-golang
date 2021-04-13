@@ -17,6 +17,7 @@ func openDB() (*sql.DB, error) {
 	return db, err
 }
 
+//SetUser cria um novo usuário
 func SetUser(w http.ResponseWriter, r *http.Request) {
 	db, err := openDB()
 	if err != nil {
@@ -47,6 +48,7 @@ func SetUser(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Usuário cadastrado com sucesso!"))
 }
 
+//GetUser retorna um usuário específico pelo ID
 func GetUser(w http.ResponseWriter, id int) {
 	db, err := openDB()
 	if err != nil {
@@ -67,6 +69,7 @@ func GetUser(w http.ResponseWriter, id int) {
 	}
 }
 
+//GetAllUsers retorna todos os usuários
 func GetAllUsers(w http.ResponseWriter) {
 	db, err := openDB()
 	if err != nil {
@@ -88,6 +91,7 @@ func GetAllUsers(w http.ResponseWriter) {
 	json.NewEncoder(w).Encode(users)
 }
 
+//EditUser edita um usuário específico pelo ID
 func EditUser(w http.ResponseWriter, r *http.Request, id int) {
 	db, err := openDB()
 	if err != nil {
@@ -112,6 +116,7 @@ func EditUser(w http.ResponseWriter, r *http.Request, id int) {
 	w.Write([]byte("Usuário atualizado com sucesso!"))
 }
 
+//DeleteUser remove um usuário específico pelo ID
 func DeleteUser(w http.ResponseWriter, id int) {
 	db, err := openDB()
 	if err != nil {
